@@ -1,2 +1,2 @@
 # CloverApi
-An API wrapper library for accessing 4chan data
+An unofficial, modern, async .NET library for interacting with the 4chan API
