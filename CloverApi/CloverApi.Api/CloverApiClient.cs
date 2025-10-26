@@ -1,9 +1,17 @@
-﻿namespace CloverApi.Api;
+﻿using System.Text.Json;
+
+namespace CloverApi.Api;
 
 public class CloverApiClient
 {
     private readonly HttpClient _httpClient;
     private readonly bool _disposeHttpClient;
+
+    private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = true,
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
 
     public CloverApiClient(HttpClient httpClient)
     {
