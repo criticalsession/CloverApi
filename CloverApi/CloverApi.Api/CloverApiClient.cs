@@ -1,11 +1,11 @@
 ﻿using System.Text.Json;
+using CloverApi.Api.Models;
 
 namespace CloverApi.Api;
 
-public class CloverApiClient
+public class CloverApiClient : ICloverApiClient
 {
     private readonly HttpClient _httpClient;
-    private readonly bool _disposeHttpClient;
 
     private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
     {
@@ -16,20 +16,11 @@ public class CloverApiClient
     public CloverApiClient(HttpClient httpClient)
     {
         _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        _disposeHttpClient = false;
     }
 
-    public CloverApiClient()
+    // TODO: GetAsync
+    public Task<List<Board>> GetBoardsAsync(CancellationToken cancellationToken = default)
     {
-        _httpClient = new HttpClient();
-        _disposeHttpClient = true;
-    }
-
-    public void Dispose()
-    {
-        if (_disposeHttpClient)
-        {
-            _httpClient.Dispose();
-        }
+        throw new NotImplementedException();
     }
 }
